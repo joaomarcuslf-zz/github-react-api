@@ -10,6 +10,7 @@ ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={ProjectPage} />
+      <Route path = ":projectName" component={ProjectPage} />
     </Route>
   </Router>,
   document.getElementById('appContainer')

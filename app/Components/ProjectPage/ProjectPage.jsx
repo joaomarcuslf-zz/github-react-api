@@ -28,7 +28,7 @@ export default class ProjectPage extends React.Component {
 
         <div className="columns">
           <ProjectsList />
-          <ProjectDetail />
+          <ProjectDetail projectName={this.props.params.projectName} />
         </div>
 
         <footer className="footer notification">

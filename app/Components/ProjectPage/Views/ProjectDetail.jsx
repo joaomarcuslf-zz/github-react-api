@@ -13,9 +13,12 @@ export default class ProjectDetail extends React.Component {
   }
 
   render(): ?React$Element<div> {
+    debugger;
     return(
       <div className="column is-4">
         ProjectDetail
+        <br />
+        {this.props.projectName}
       </div>
     );
   }
