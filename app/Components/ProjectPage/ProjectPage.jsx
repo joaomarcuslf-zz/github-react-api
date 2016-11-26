@@ -4,15 +4,33 @@ import React from 'react';
 import ProjectsList from './Views/ProjectsList.jsx';
 import ProjectDetail from './Views/ProjectDetail.jsx';
 
+import ProjectPageStore from '../../Stores/ProjectPageStore.es6';
+
 export default class ProjectPage extends React.Component {
   propTypes: {}
 
   constructor() {
     super();
+
+    this.state = { projects: ProjectPageStore.getProjects() };
+  }
+
+  componentWillMount() {
+    ProjectPageStore.on('change', () => {
+      this.getProjects();
+    });
   }
 
   shouldComponentUpdate(): boolean {
     return true;
+  }
+
+  componentWillUnmount() {
+    ProjectPageStore.removeListener('change', this.getProjects);
+  }
+
+  getProjects() {
+    this.setState({ projects: ProjectPageStore.getProjects() });
   }
 
   render(): ?React$Element<div> {
@@ -27,7 +45,7 @@ export default class ProjectPage extends React.Component {
         </span>
 
         <div className="columns">
-          <ProjectsList />
+          <ProjectsList projects={this.state.projects} />
           <ProjectDetail projectName={this.props.params.projectName} />
         </div>
 
