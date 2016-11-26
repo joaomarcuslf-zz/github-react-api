@@ -40,10 +40,6 @@ export default class ProjectPage extends React.Component {
           This will be the Header
         </nav>
 
-        <span className="hero notification">
-          ProjectPage
-        </span>
-
         <div className="columns">
           <ProjectsList projects={this.state.projects} />
           <ProjectDetail projectName={this.props.params.projectName} />

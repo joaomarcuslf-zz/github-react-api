@@ -14,7 +14,7 @@ export default class ProjectDetail extends React.Component {
 
   render(): ?React$Element<div> {
     return(
-      <div className="column is-4">
+      <div className="column is-6">
         ProjectDetail
         <br />
         {this.props.projectName}

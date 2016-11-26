@@ -1,6 +1,8 @@
 /* @flow */
 import React from 'react';
 
+import Project from './Project.jsx';
+
 export default class ProjectList extends React.Component {
   propTypes: {}
 
@@ -17,15 +19,13 @@ export default class ProjectList extends React.Component {
       .map((project: objects): ?React$Element<div> => {
         return(
           <div key={project.id} className="container">
-            {project.full_name}
+            <Project project={project} />
           </div>
         );
       });
 
     return(
-      <div className="column is-8">
-        ProjectList
-        <br />
+      <div className="column is-6">
         <div className="container">
           {projectsList}
         </div>

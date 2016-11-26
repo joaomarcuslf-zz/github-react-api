@@ -15,9 +15,9 @@ export default class ProjectsHelper {
 
   compareProjectsByStart(projectOne: object, projectTwo: object): Interger {
     if (parseInt(projectOne.stargazers_count) < parseInt(projectTwo.stargazers_count))
-      return -1;
-    if (parseInt(projectOne.stargazers_count) > parseInt(projectTwo.stargazers_count))
       return 1;
+    if (parseInt(projectOne.stargazers_count) > parseInt(projectTwo.stargazers_count))
+      return -1;
     return 0;
   }
 }
