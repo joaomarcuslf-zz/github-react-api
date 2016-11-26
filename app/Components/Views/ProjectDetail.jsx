@@ -1,11 +1,8 @@
 /* @flow */
 import React from 'react';
-import 'whatwg-fetch';
 
-export default class App extends React.Component {
-  propTypes: {
-    children: React.PropTypes.element.isRequired
-  }
+export default class ProjectDetail extends React.Component {
+  propTypes: {}
 
   constructor() {
     super();
@@ -17,8 +14,8 @@ export default class App extends React.Component {
 
   render(): ?React$Element<div> {
     return(
-      <div className="container">
-        {this.props.children}
+      <div className="column is-4">
+        ProjectDetail
       </div>
     );
   }
