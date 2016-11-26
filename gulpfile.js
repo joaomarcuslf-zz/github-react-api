@@ -43,7 +43,7 @@ gulp.task('bundle:scss', () => {
 
 gulp.task('watch:scss', () => {
   gutil.log('Starting gulp scss bundle watcher');
-  gulp.watch('assets/scss/**/*.scss', ['bundle:scss']);
+  gulp.watch('assets/stylesheets/**/*.scss', ['bundle:scss']);
 });
 
 // Build
