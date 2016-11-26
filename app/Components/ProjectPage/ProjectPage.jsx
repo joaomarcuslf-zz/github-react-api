@@ -1,8 +1,8 @@
 /* @flow */
 import React from 'react';
 
-import ProjectsList from './ProjectsList.jsx';
-import ProjectDetail from './ProjectDetail.jsx';
+import ProjectsList from './Views/ProjectsList.jsx';
+import ProjectDetail from './Views/ProjectDetail.jsx';
 
 export default class ProjectPage extends React.Component {
   propTypes: {}
