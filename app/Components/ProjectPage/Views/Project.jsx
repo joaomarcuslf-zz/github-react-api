@@ -1,5 +1,6 @@
 /* @flow */
 import React from 'react';
+import { Link } from 'react-router';
 
 export default class Project extends React.Component {
   propTypes: {}
@@ -18,7 +19,9 @@ export default class Project extends React.Component {
         <div className="hero-body">
           <div className="container is-fluid">
             <h1 className="title">
-              {this.props.project.full_name}
+              <Link to={`/${this.props.project.name}`}>
+                {this.props.project.full_name}
+              </Link>
             </h1>
           </div>
         </div>

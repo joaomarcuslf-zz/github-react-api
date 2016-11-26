@@ -12,11 +12,12 @@ export default class ProjectDetail extends React.Component {
     return true;
   }
 
+  componentWillUpdate() {
+  }
+
   render(): ?React$Element<div> {
     return(
       <div className="column is-6">
-        ProjectDetail
-        <br />
         {this.props.projectName}
       </div>
     );
