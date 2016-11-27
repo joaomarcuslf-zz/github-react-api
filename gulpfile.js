@@ -1,6 +1,6 @@
+require('babel-core/register');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
-const babel = require('gulp-babel');
 const mocha = require('gulp-mocha');
 const concat = require('gulp-concat');
 const autoprefixer = require('gulp-autoprefixer');
@@ -9,7 +9,6 @@ const sass = require('gulp-sass');
 const exec = require('child_process').exec;
 const cssBeautify = require('gulp-cssbeautify');
 const cssComb = require('gulp-csscomb');
-const foreach = require('gulp-foreach');
 
 /* Tasks */
 
@@ -46,6 +45,11 @@ gulp.task('watch:scss', () => {
   gulp.watch('assets/stylesheets/**/*.scss', ['bundle:scss']);
 });
 
+gulp.task('bdd', () => {
+  gutil.log('Starting gulp bdd watcher');
+  gulp.watch(['app/**/*.*', 'specs/**/*.*'], ['run:test']);
+});
+
 // Build
 
 gulp.task('run:build', ['build:js', 'build:scss'], () => {
@@ -76,11 +80,6 @@ gulp.task('build:scss', () => {
 gulp.task('run:test', () => {
   gutil.log('Running your specs files');
   return gulp
-  .src('./specs/**/*.spec.js')
-  .pipe(foreach(function(stream, file){
-    gutil.log('In:', file);
-    return stream
-      .pipe(babel())
-      .pipe(mocha());
-  }));
+    .src('./specs/**/*.spec.*')
+    .pipe(mocha());
 });
