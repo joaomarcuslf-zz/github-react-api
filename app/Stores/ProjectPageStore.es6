@@ -2,6 +2,7 @@
 import { EventEmitter } from 'events';
 import dispatcher from '../Dispatcher/dispatcher.es6';
 import ProjectsHelper from '../Helpers/ProjectsHelper.es6';
+import Constants from '../Constants/Constants.es6';
 
 class ProjectPageStore extends EventEmitter {
   constructor() {
@@ -111,13 +112,13 @@ class ProjectPageStore extends EventEmitter {
 
   handleActions(action: object) {
     switch(action.type) {
-      case 'DETAIL_PROJECT':
+      case Constants.DETAIL_PROJECT:
         this.detailProject(action.project);
         break;
-      case 'DETAIL_PROJECT_FROM_NAME':
+      case Constants.DETAIL_PROJECT_FROM_NAME:
         this.detailProjectFromName(action.projectName);
         break;
-      case 'GET_MORE_20':
+      case Constants.GET_MORE_20:
         this.getMore20();
         break;
       default:

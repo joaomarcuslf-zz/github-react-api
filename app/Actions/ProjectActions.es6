@@ -1,23 +1,24 @@
 /* @flow */
 import dispatcher from '../Dispatcher/dispatcher.es6';
+import Constants from '../Constants/Constants.es6';
 
 function detailProject(project: object) {
   dispatcher.dispatch({
-    type: 'DETAIL_PROJECT',
+    type: Constants.DETAIL_PROJECT,
     project: project
   });
 }
 
 function detailProjectFromName(projectName: string) {
   dispatcher.dispatch({
-    type: 'DETAIL_PROJECT_FROM_NAME',
+    type: Constants.DETAIL_PROJECT_FROM_NAME,
     projectName: projectName
   });
 }
 
 function getMore20() {
   dispatcher.dispatch({
-    type: 'GET_MORE_20'
+    type: Constants.GET_MORE_20
   });
 }
 
