@@ -9,6 +9,8 @@ class ProjectPageStore extends EventEmitter {
 
     this.error = {};
     this.projects = [];
+    this.commits = [];
+    this.commitsToShow = [];
     this.project = {};
     this.helpers = {
       projectsHelper: new ProjectsHelper()
@@ -52,11 +54,15 @@ class ProjectPageStore extends EventEmitter {
   }
 
   detailProject(project: object) {
-    this.project = project;
+    if(project.name !== this.project.name) {
+      this.project = project;
 
-    this.getProjectCommits(project.name);
+      this.commitsToShow = [];
 
-    this.emit('change');
+      this.getProjectCommits(project.name);
+
+      this.emit('change');
+    }
   }
 
   getProjectDetails(): object {
@@ -72,10 +78,16 @@ class ProjectPageStore extends EventEmitter {
       .then(this.handleResponse)
       .then((result: object) => {
         this.commits = result;
+        this.begin = 0;
+        this.commitsToShow = this.helpers.projectsHelper.getSliceOfArray(this.commits, this.begin, this.begin+=20);
 
         this.emit('change');
       })
       .catch(this.errorHandler);
+  }
+
+  getCommits(): array {
+    return this.commitsToShow;
   }
 
   detailProjectFromName(projectName: string) {
@@ -90,6 +102,13 @@ class ProjectPageStore extends EventEmitter {
     this.emit('change');
   }
 
+  getMore20() {
+    this.commitsToShow = this.commitsToShow.concat(
+      this.helpers.projectsHelper.getSliceOfArray(this.commits, this.begin, this.begin+=20)
+    );
+    this.emit('change');
+  }
+
   handleActions(action: object) {
     switch(action.type) {
       case 'DETAIL_PROJECT':
@@ -97,6 +116,9 @@ class ProjectPageStore extends EventEmitter {
         break;
       case 'DETAIL_PROJECT_FROM_NAME':
         this.detailProjectFromName(action.projectName);
+        break;
+      case 'GET_MORE_20':
+        this.getMore20();
         break;
       default:
         break;
