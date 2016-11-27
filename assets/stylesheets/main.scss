@@ -5,3 +5,13 @@
   max-height: 100vh;
   overflow: auto;
 }
+
+.is-not-overflown {
+  height: auto;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.is-hidden {
+  display: none;
+}
