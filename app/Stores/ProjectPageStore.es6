@@ -7,30 +7,44 @@ class ProjectPageStore extends EventEmitter {
   constructor() {
     super();
 
+    this.error = {};
     this.projects = [];
     this.project = {};
     this.helpers = {
       projectsHelper: new ProjectsHelper()
     };
 
+    this.errorHandler = this.errorHandler.bind(this);
+
     fetch('https://api.github.com/users/globocom/repos', {
       method: 'GET',
       mode: 'cors', // Same Origin
       type: 'all'
     })
-      .then((response: object): object => {
-        // Fetch API will give an response with promise
-        return response.json();
-      })
+      .then(this.handleResponse)
       .then((result: object) => {
         this.projects = this.helpers.projectsHelper.sortProjectBy('stars', result);
 
         this.emit('change');
         this.emit('responseBack');
-      }, (error: object) => {
-        // handle network error
-        console.error(error);
-      });
+      })
+      .catch(this.errorHandler);
+  }
+
+  handleResponse(response: object): object {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+    // Fetch API will give an response with promise
+    return response.json();
+  }
+
+  errorHandler(error: object) {
+    // handle network error
+    // @TODO: Make Error Component
+    this.emit('errorEvent');
+    this.error = error;
+    console.error(error);
   }
 
   getProjects(): object {
@@ -55,18 +69,13 @@ class ProjectPageStore extends EventEmitter {
       mode: 'cors', // Same Origin
       type: 'all'
     })
-      .then((response: object): object => {
-        // Fetch API will give an response with promise
-        return response.json();
-      })
+      .then(this.handleResponse)
       .then((result: object) => {
         this.commits = result;
 
         this.emit('change');
-      }, (error: object) => {
-        // handle network error
-        console.error(error);
-      });
+      })
+      .catch(this.errorHandler);
   }
 
   detailProjectFromName(projectName: string) {
