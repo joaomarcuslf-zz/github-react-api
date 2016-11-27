@@ -46,6 +46,7 @@ export default class ProjectDetail extends React.Component {
         <section className={componentClass}>
           <div className='hero-body'>
             <MainDetails project={this.state.project} />
+            <hr />
             <CommitsList commits={this.state.commits} />
           </div>
         </section>

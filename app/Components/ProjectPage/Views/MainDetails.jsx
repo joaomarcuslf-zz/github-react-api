@@ -16,8 +16,7 @@ export default class Project extends React.Component {
     return(
       <div className='container is-fluid'>
         <h1 className='title'>
-          Project name:<br />
-        <strong>{this.props.project.name}</strong>
+          Project name: <strong>{this.props.project.name}</strong>
         </h1>
         <h2 className='subtitle columns is-mobile is-desktop'>
           <div className='column'>

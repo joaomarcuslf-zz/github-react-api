@@ -17,7 +17,7 @@ export default class App extends React.Component {
 
   render(): ?React$Element<div> {
     return(
-      <div className="container">
+      <div>
         {this.props.children}
       </div>
     );

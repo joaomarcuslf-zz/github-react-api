@@ -40,7 +40,7 @@ export default class CommitsList extends React.Component {
       });
 
     return(
-      <div className='container is-overflown' onScroll={this.handleScroll}>
+      <div className='container is-fluid commit-list' onScroll={this.handleScroll}>
         {commitsList}
       </div>
     );

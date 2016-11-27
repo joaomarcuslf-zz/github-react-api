@@ -13,5 +13,11 @@
 
 .paragraph-break {
   word-wrap: break-word;
-  max-width: 248px;
+}
+
+.commit-list {
+  height: auto;
+  max-height: calc(70vh - 20px);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
