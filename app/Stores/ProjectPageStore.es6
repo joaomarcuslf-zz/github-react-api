@@ -99,8 +99,10 @@ class ProjectPageStore extends EventEmitter {
 
   getFromProjects(projectName: string) {
     this.project = this.helpers.projectsHelper.getFromName(projectName, this.projects);
-    this.getProjectCommits(projectName);
-    this.emit('change');
+    if(this.project.hasOwnProperty('name')) {
+      this.getProjectCommits(projectName);
+      this.emit('change');
+    }
   }
 
   getMore20() {
