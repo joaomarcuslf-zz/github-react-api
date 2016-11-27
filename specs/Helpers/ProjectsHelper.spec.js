@@ -1,6 +1,4 @@
-const chai = require('chai');
-
-const expect = chai.expect;
+const expect = require('../test-helper').default.expect;
 
 const ProjectHelper = require('../../app/Helpers/ProjectsHelper.es6');
 
