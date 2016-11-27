@@ -54,7 +54,7 @@
     "bundle:js": "webpack",
     "watch:js": "webpack --config ./webpack.config.js --watch --colors",
     "build:js": "webpack --minimize",
-    "test": "mocha --compilers js:babel-core/register ./specs/**/*.spec.*"
+    "test": "gulp run:test"
   },
   "author": "João Marcus Fernandes <jmarcusfernandes@gmail.com>",
   "license": "MIT",

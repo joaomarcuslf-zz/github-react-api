@@ -1,7 +1,7 @@
-require('babel-core/register');
 const gulp = require('gulp');
 const gutil = require('gulp-util');
 const mocha = require('gulp-mocha');
+const babel = require('babel-core/register');
 const concat = require('gulp-concat');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
@@ -81,5 +81,10 @@ gulp.task('run:test', () => {
   gutil.log('Running your specs files');
   return gulp
     .src('./specs/**/*.spec.*')
-    .pipe(mocha());
+    .pipe(mocha({
+  		reporter: 'spec',
+  		compilers: {
+  			js: babel
+  		}
+  	}));
 });
