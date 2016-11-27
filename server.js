@@ -57,4 +57,4 @@ http.createServer((request, response) => {
 
 let appUrl = 'http://localhost:' + PORT;
 console.log('Server running on', appUrl);
-open(appUrl);
+//open(appUrl);
