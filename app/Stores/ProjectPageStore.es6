@@ -26,6 +26,7 @@ class ProjectPageStore extends EventEmitter {
         this.projects = this.helpers.projectsHelper.sortProjectBy('stars', result);
 
         this.emit('change');
+        this.emit('responseBack');
       }, (error: object) => {
         // handle network error
         console.error(error);
@@ -68,10 +69,25 @@ class ProjectPageStore extends EventEmitter {
       });
   }
 
+  detailProjectFromName(projectName: string) {
+    this.on('responseBack', () => {
+      this.getFromProjects(projectName);
+    });
+  }
+
+  getFromProjects(projectName: string) {
+    this.project = this.helpers.projectsHelper.getFromName(projectName, this.projects);
+    this.getProjectCommits(projectName);
+    this.emit('change');
+  }
+
   handleActions(action: object) {
     switch(action.type) {
       case 'DETAIL_PROJECT':
         this.detailProject(action.project);
+        break;
+      case 'DETAIL_PROJECT_FROM_NAME':
+        this.detailProjectFromName(action.projectName);
         break;
       default:
         break;

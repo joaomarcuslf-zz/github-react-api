@@ -8,6 +8,14 @@ function detailProject(project: object) {
   });
 }
 
+function detailProjectFromName(projectName: string) {
+  dispatcher.dispatch({
+    type: 'DETAIL_PROJECT_FROM_NAME',
+    projectName: projectName
+  });
+}
+
 export default {
-  detailProject: detailProject
+  detailProject: detailProject,
+  detailProjectFromName: detailProjectFromName
 };

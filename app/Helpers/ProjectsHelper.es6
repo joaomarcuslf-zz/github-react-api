@@ -13,6 +13,12 @@ export default class ProjectsHelper {
     }
   }
 
+  getFromName(name: string, projects: array)  {
+    return projects.find((element) => {
+      return element.name === name;
+    });
+  }
+
   compareProjectsByStart(projectOne: object, projectTwo: object): Interger {
     if (parseInt(projectOne.stargazers_count) < parseInt(projectTwo.stargazers_count))
       return 1;
