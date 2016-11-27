@@ -8,9 +8,10 @@ class ProjectPageStore extends EventEmitter {
     super();
 
     this.projects = [];
+    this.project = {};
     this.helpers = {
       projectsHelper: new ProjectsHelper()
-    }
+    };
 
     fetch('https://api.github.com/users/globocom/repos', {
       method: 'GET',
@@ -35,8 +36,43 @@ class ProjectPageStore extends EventEmitter {
     return this.projects;
   }
 
+  detailProject(project: object) {
+    this.project = project;
+
+    this.getProjectCommits(project.name);
+
+    this.emit('change');
+  }
+
+  getProjectDetails(): object {
+    return this.project;
+  }
+
+  getProjectCommits(projectName: string) {
+    fetch(`https://api.github.com/repos/globocom/${projectName}/commits`, {
+      method: 'GET',
+      mode: 'cors', // Same Origin
+      type: 'all'
+    })
+      .then((response: object): object => {
+        // Fetch API will give an response with promise
+        return response.json();
+      })
+      .then((result: object) => {
+        this.commits = result;
+
+        this.emit('change');
+      }, (error: object) => {
+        // handle network error
+        console.error(error);
+      });
+  }
+
   handleActions(action: object) {
     switch(action.type) {
+      case 'DETAIL_PROJECT':
+        this.detailProject(action.project);
+        break;
       default:
         break;
     }
