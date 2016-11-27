@@ -1,5 +1,5 @@
 const http = require('http');
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const PORT = process.env.PORT || 3000;
 const open = require('open');
@@ -34,14 +34,22 @@ http.createServer((request, response) => {
 
     fs.readFile(filePath, function(error, content) {
         if (error) {
+          let timestamp = Date.now();
           response.writeHead(404);
-          response.end(`Error: ${error.code}`);
-          console.error('Error on request!');
-          console.error('Status: 400');
-          console.error(`Code: ${error.code}`);
-          console.error(`Path: ${error.path}`);
-          console.error(`Error: ${error.stack}`);
-          response.end();
+
+          error.statusCode = response.statusCode;
+          error.statusMessage = response.statusMessage;
+
+          console.log(response)
+
+
+          let errorMessage =
+          `Error: ${error.statusMessage}\nStatus: ${error.statusCode}\nPath: ${error.path}`;
+
+          console.error(errorMessage);
+          response.end(errorMessage);
+
+          fs.writeJson(`./logs/error-${timestamp}.json`, error, () => fs.mkdirpSync('./logs'));
         }
         else {
             response.setHeader('Access-Control-Allow-Origin', '*');
