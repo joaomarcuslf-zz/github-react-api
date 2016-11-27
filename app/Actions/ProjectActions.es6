@@ -9,11 +9,11 @@ function detailProject(project: object) {
 }
 
 function detailProjectFromName(projectName: string) {
+  dispatcher.dispatch({
+    type: 'DETAIL_PROJECT_FROM_NAME',
+    projectName: projectName
+  });
 }
-dispatcher.dispatch({
-  type: 'DETAIL_PROJECT_FROM_NAME',
-  projectName: projectName
-});
 
 function getMore20() {
   dispatcher.dispatch({
