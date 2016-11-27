@@ -42,7 +42,7 @@ export default class ProjectList extends React.Component {
       });
 
     return(
-      <div className="column is-6 is-overflown">
+      <div className="column is-6 is-overflown commits-list">
         <div className="container">
           {projectsList}
         </div>

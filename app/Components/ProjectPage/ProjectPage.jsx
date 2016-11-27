@@ -29,7 +29,7 @@ export default class ProjectPage extends React.Component {
   render(): ?React$Element<div> {
     return(
       <section className="container is-fluid">
-        <div className="columns">
+        <div className="columns is-gapless is-mobile is-desktop">
           <ProjectsList />
           <ProjectDetail />
         </div>
