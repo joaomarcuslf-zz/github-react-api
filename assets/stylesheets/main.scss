@@ -3,15 +3,14 @@
 .is-overflown {
   height: auto;
   max-height: 100vh;
-  overflow: auto;
-}
-
-.is-not-overflown {
-  height: auto;
-  max-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .is-hidden {
   display: none;
+}
+
+.paragraph-break {
+  word-wrap: break-word;
 }
