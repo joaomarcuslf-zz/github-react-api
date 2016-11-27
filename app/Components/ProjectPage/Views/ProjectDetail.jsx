@@ -35,7 +35,6 @@ export default class ProjectDetail extends React.Component {
     let componentClass = (this.state.project.hasOwnProperty('name')) ?
       'hero is-light' :
       'is-hidden';
-    debugger;
     return(
       <div className='column is-6 is-not-overflown'>
         <section className={componentClass}>
