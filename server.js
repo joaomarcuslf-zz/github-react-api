@@ -2,7 +2,6 @@ const http = require('http');
 const fs = require('fs-extra');
 const path = require('path');
 const PORT = process.env.PORT || 3000;
-const open = require('open');
 
 http.createServer((request, response) => {
     let filePath = '.' + request.url;
@@ -62,4 +61,3 @@ http.createServer((request, response) => {
 
 let appUrl = 'http://localhost:' + PORT;
 console.log('Server running on', appUrl);
-//open(appUrl);
