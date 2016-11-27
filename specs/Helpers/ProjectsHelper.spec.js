@@ -2,7 +2,7 @@ const chai = require('chai');
 
 const expect = chai.expect;
 
-const ProjectHelper = require('../app/Helpers/ProjectsHelper.es6');
+const ProjectHelper = require('../../app/Helpers/ProjectsHelper.es6');
 
 const HelperTest = new ProjectHelper.default();
 
