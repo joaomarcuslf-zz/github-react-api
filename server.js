@@ -40,9 +40,6 @@ http.createServer((request, response) => {
           error.statusCode = response.statusCode;
           error.statusMessage = response.statusMessage;
 
-          console.log(response)
-
-
           let errorMessage =
           `Error: ${error.statusMessage}\nStatus: ${error.statusCode}\nPath: ${error.path}`;
 
