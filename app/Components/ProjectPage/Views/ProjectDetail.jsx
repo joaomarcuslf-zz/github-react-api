@@ -2,6 +2,7 @@
 import React from 'react';
 
 import ProjectPageStore from '../../../Stores/ProjectPageStore.es6';
+import MainDetails from './MainDetails.jsx';
 
 export default class ProjectDetail extends React.Component {
   propTypes: {}
@@ -34,24 +35,12 @@ export default class ProjectDetail extends React.Component {
     let componentClass = (this.state.project.hasOwnProperty('name')) ?
       'hero is-light' :
       'is-hidden';
+    debugger;
     return(
       <div className='column is-6 is-not-overflown'>
         <section className={componentClass}>
           <div className='hero-body'>
-            <div className='container is-fluid'>
-              <h1 className='title'>
-                Projet name:<br />
-                <strong>{this.state.project.name}</strong>
-              </h1>
-              <h2 className='subtitle columns'>
-                <div className='column'>
-                  Stars: {this.state.project.stargazers_count}
-                </div>
-                <div className='column'>
-                  Forks: {this.state.project.forks_count}
-                </div>
-              </h2>
-            </div>
+            <MainDetails project={this.state.project} />
           </div>
         </section>
       </div>
