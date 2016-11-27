@@ -13,10 +13,14 @@ export default class ProjectsHelper {
     }
   }
 
-  getFromName(name: string, projects: array)  {
-    return projects.find((element) => {
+  getFromName(name: string, projects: array): object {
+    return projects.find((element: object): boolean => {
       return element.name === name;
-    });
+    }) || {};
+  }
+
+  getSliceOfArray(arrayToSlice: array, begin: integer, end: integer) {
+    return arrayToSlice.slice(begin, end);
   }
 
   compareProjectsByStart(projectOne: object, projectTwo: object): Interger {
