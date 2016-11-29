@@ -2,7 +2,7 @@ const expect = require('../test-helper').default.expect;
 
 const ProjectActions = require('../../app/Actions/ProjectActions.es6').default;
 
-const dispatcher = require('../../app/Dispatcher/dispatcher.es6').default;
+import dispatcher from '../../app/Dispatcher/dispatcher.es6';
 
 describe('ProjectActions', () => {
   describe('DETAIL_PROJECT', () => {
