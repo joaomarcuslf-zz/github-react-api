@@ -56,6 +56,7 @@
     "bundle:js": "webpack",
     "watch:js": "webpack --config ./webpack.config.js --watch --colors",
     "build:js": "webpack --minimize",
+    "build": "gulp run:build",
     "test": "gulp run:test"
   },
   "author": "João Marcus Fernandes <jmarcusfernandes@gmail.com>",
