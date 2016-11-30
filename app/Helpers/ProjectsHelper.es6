@@ -19,7 +19,7 @@ export default class ProjectsHelper {
     }) || {};
   }
 
-  getSliceOfArray(arrayToSlice: array, begin: integer, end: integer) {
+  getSliceOfArray(arrayToSlice: array, begin: integer, end: integer): array {
     return arrayToSlice.slice(begin, end);
   }
 
