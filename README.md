@@ -34,3 +34,5 @@ gulp bdd #will run every test on save
 - Chai
 - Bulma.io
 - SCSS
+
+> Made by: [@joaomarcuslf](http://joaomarcuslf.github.io/)
