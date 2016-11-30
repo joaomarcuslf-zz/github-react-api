@@ -15,18 +15,8 @@ export default class CommitsList extends React.Component {
     return true;
   }
 
-  handleScroll(event) {
-    // debugger;
-    let parentScrollHeight = event.target.parentNode.scrollHeight;
-    let parentscrollTop = event.target.parentElement.scrollTop;
-    let targetScrollHeight = event.target.scrollTop;
-
-    let conditionToGetMore = (parentScrollHeight <= parentscrollTop + targetScrollHeight);
-
-    if(conditionToGetMore) {
-      ProjectActions.getMore20();
-    }
-
+  handleClick() {
+    ProjectActions.getMore20();
   }
 
   render(): ?React$Element<div> {
@@ -39,9 +29,14 @@ export default class CommitsList extends React.Component {
         );
       });
 
+      let buttonClass = 'button is-info get-more-button ' + ((commitsList.length > 0) ? 'is-outlined' : 'is-disabled');
+
     return(
-      <div className='container is-fluid commit-list' onScroll={this.handleScroll}>
-        {commitsList}
+      <div className='container is-fluid'>
+        <div className='commit-list'>
+          {commitsList}
+        </div>
+        <button className={buttonClass} onClick={this.handleClick}>Get More</button>
       </div>
     );
   }
